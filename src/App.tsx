@@ -64,6 +64,11 @@ export function App() {
             if (newValue === null) {
               return
             }
+            // Fixed Bug 3 by adding this if statement
+            if (newValue.id === "") {
+              await loadAllTransactions();
+              return
+            }
 
             await loadTransactionsByEmployee(newValue.id)
           }}
