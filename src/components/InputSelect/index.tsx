@@ -1,5 +1,5 @@
 import Downshift from "downshift"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import classNames from "classnames"
 import { DropdownPosition, GetDropdownPositionFn, InputSelectOnChange, InputSelectProps } from "./types"
 
@@ -71,7 +71,8 @@ export function InputSelect<TItem>({
                 "RampInputSelect--dropdown-container-opened": isOpen,
               })}
               {...getMenuProps()}
-              style={{ top: dropdownPosition.top, left: dropdownPosition.left }}
+              // Fixed Bug 1 by adding position: 'absolute'
+              style={{ position: 'absolute', top: dropdownPosition.top, left: dropdownPosition.left }}
             >
               {renderItems()}
             </div>
