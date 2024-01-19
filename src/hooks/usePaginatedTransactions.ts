@@ -22,6 +22,11 @@ export function usePaginatedTransactions(): PaginatedTransactionsResult {
         return response
       }
 
+      // Fixed bug 4 by adding this if statement
+      if (paginatedTransactions !== null) {
+        return { data: [...paginatedTransactions.data, ...response.data], nextPage: response.nextPage }
+      }
+
       return { data: response.data, nextPage: response.nextPage }
     })
   }, [fetchWithCache, paginatedTransactions])
