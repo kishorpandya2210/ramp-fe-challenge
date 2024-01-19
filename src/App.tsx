@@ -83,7 +83,8 @@ export function App() {
           {transactions !== null && (
             <button
               className="RampButton"
-              disabled={paginatedTransactionsUtils.loading}
+              // Fixed Bug 6 by adding the following conditions below to disable the button
+              disabled={paginatedTransactionsUtils.loading || paginatedTransactions?.nextPage == null || transactionsByEmployee?.length === 0}
               onClick={async () => {
                 await loadAllTransactions()
               }}
